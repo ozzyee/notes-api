@@ -40,8 +40,25 @@ export async function getCard(authId, id) {
     id,
     _authId,
   ]);
+  const data = getCard.rows[0];
+  const authid = decrypt(process.env.SALT, data.authid);
+  const cardnumber = decrypt(process.env.SALT, data.cardnumber);
+  const cardsortcode = decrypt(process.env.SALT, data.cardsortcode);
+  const cardaccountnumber = decrypt(process.env.SALT, data.cardaccountnumber);
+  const cardcvv = decrypt(process.env.SALT, data.cardcvv);
+  const cardpin = decrypt(process.env.SALT, data.cardpin);
+  const cardinfo = decrypt(process.env.SALT, data.cardinfo);
 
-  return getCard.rows;
+  return {
+    ...data,
+    authid,
+    cardnumber,
+    cardsortcode,
+    cardaccountnumber,
+    cardcvv,
+    cardpin,
+    cardinfo,
+  };
 }
 
 // create cards
@@ -345,8 +362,25 @@ export async function patchCard(authId, id, data) {
     id,
     _authId,
   ]);
+  const _data = getCard.rows[0];
+  const authid = decrypt(process.env.SALT, _data.authid);
+  const cardnumber = decrypt(process.env.SALT, _data.cardnumber);
+  const cardsortcode = decrypt(process.env.SALT, _data.cardsortcode);
+  const cardaccountnumber = decrypt(process.env.SALT, _data.cardaccountnumber);
+  const cardcvv = decrypt(process.env.SALT, _data.cardcvv);
+  const cardpin = decrypt(process.env.SALT, _data.cardpin);
+  const cardinfo = decrypt(process.env.SALT, _data.cardinfo);
 
-  return getCard.rows;
+  return {
+    ..._data,
+    authid,
+    cardnumber,
+    cardsortcode,
+    cardaccountnumber,
+    cardcvv,
+    cardpin,
+    cardinfo,
+  };
 }
 
 // delete cards
