@@ -3,7 +3,7 @@ import query from "../index.js";
 async function createCardsTable() {
   const res = await query(`CREATE TABLE IF NOT EXISTS cards (
     id SERIAL PRIMARY KEY,
-    usersID TEXT,
+    authId TEXT,
     cardName TEXT,
     cardNumber TEXT,
     cardSortCode Text,

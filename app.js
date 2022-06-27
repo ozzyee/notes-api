@@ -8,7 +8,7 @@ import logger from "morgan";
 
 // routes
 import userRoute from "./routes/users.js";
-
+import cardsRoutes from "./routes/cards.js";
 const app = express();
 
 app.use(logger("dev"));
@@ -20,6 +20,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // routes
 app.use("/users", userRoute);
+app.use("/cards", cardsRoutes);
 
 app.use(function (req, res, next) {
   res

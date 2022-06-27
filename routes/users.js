@@ -26,7 +26,7 @@ userRoute.get("/:id", async function (req, res) {
 
 // create user
 userRoute.post("/", async function (req, res) {
-  let data = req.body;
+  const data = req.body;
   const addUserData = await addUser(data);
   res.json(...addUserData);
 });

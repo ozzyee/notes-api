@@ -90,16 +90,18 @@ export async function patchUser(data, id) {
   }
 
   if (authId) {
+    const authIdCrypt = crypt(process.env.SALT, authId);
     await query(
       `UPDATE users SET authId=$1  WHERE id=$2 RETURNING email, firstName, lastName, authId, pin `,
-      [authId, id]
+      [authIdCrypt, id]
     );
   }
 
   if (pin) {
+    const pinCrypt = crypt(process.env.SALT, pin);
     await query(
       `UPDATE users SET pin=$1  WHERE id=$2 RETURNING email, firstName, lastName, authId, pin `,
-      [pin, id]
+      [pinCrypt, id]
     );
   }
 
