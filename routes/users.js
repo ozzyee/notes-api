@@ -21,14 +21,14 @@ userRoute.get("/", async function (req, res) {
 userRoute.get("/:id", async function (req, res) {
   const id = req.params.id;
   const user = await getUser(id);
-  return res.json(...user);
+  return res.json(user);
 });
 
 // create user
 userRoute.post("/", async function (req, res) {
-  // let data = req.body;
-  // const addUserData = await addUser(data);
-  // res.json(...addUserData);
+  let data = req.body;
+  const addUserData = await addUser(data);
+  res.json(...addUserData);
 });
 
 // update user
