@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dbcreateuserstable": "node -r dotenv/config ./db/scripts/createUsersTable.js",
+    "dbcreateCardsTble": "node -r dotenv/config ./db/scripts/createCardsTable.js",
     "dev": "nodemon -r dotenv/config ./bin/www.js",
     "start": "node ./bin/www.js"
   },
